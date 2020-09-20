@@ -42,4 +42,12 @@ public class DynamicDoubleArray {
         return array[index];
     }
 
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("DynamicDoubleArray{")
+                .append("array=").append(array)
+                .append("capacity=").append(capacity);
+        return builder.toString();
+    }
+
 }
