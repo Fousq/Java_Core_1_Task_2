@@ -32,4 +32,14 @@ public class DynamicDoubleArray {
         return true;
     }
 
+    public double get(int index) {
+        if (index < 0) {
+            throw new IllegalArgumentException("Index cannot be below zero");
+        }
+        if (index > array.length) {
+            throw new IndexOutOfBoundsException("Cannot get value beyond the capacity rage");
+        }
+        return array[index];
+    }
+
 }
