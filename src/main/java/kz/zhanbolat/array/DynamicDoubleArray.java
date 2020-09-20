@@ -6,7 +6,6 @@ import java.util.Objects;
 public class DynamicDoubleArray {
     private double[] array;
     private int capacity;
-    private int count;
 
     public DynamicDoubleArray() {
         array = new double[0];
