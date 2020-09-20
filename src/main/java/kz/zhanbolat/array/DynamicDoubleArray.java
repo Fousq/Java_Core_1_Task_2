@@ -1,7 +1,6 @@
 package kz.zhanbolat.array;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class DynamicDoubleArray {
     private double[] array;
@@ -60,11 +59,9 @@ public class DynamicDoubleArray {
     }
 
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("DynamicDoubleArray{")
-                .append("array=").append(array)
-                .append("capacity=").append(capacity);
-        return builder.toString();
+        return new StringBuilder().append("DynamicDoubleArray{")
+                .append("array=").append(Arrays.toString(array))
+                .append("capacity=").append(capacity).toString();
     }
 
 }
