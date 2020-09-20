@@ -2,36 +2,36 @@ package kz.zhanbolat.array;
 
 import java.util.Arrays;
 
-public class DynamicDoubleArray {
-    private double[] array;
+public class DynamicDoubleArray<T extends Number> {
+    private T[] array;
     private int capacity;
 
     public DynamicDoubleArray() {
-        array = new double[0];
+        array = (T[]) new Number[0];
     }
 
     public DynamicDoubleArray(int capacity) {
-        array = new double[0];
+        array = (T[]) new Number[capacity];
         this.capacity = capacity;
     }
 
-    public boolean add(double value) {
+    public boolean add(T value) {
         if (array.length == 0) {
-            array = new double[1];
+            array = (T[]) new Number[1];
             array[0] = value;
             return true;
         }
         if (array.length == capacity) {
             return false;
         }
-        double[] buffer = Arrays.copyOf(array, array.length);
-        array = new double[array.length + 1];
+        T[] buffer = Arrays.copyOf(array, array.length);
+        array = (T[]) new Number[array.length + 1];
         System.arraycopy(buffer, 0, array, 0, buffer.length);
         array[array.length - 1] = value;
         return true;
     }
 
-    public double get(int index) {
+    public T get(int index) {
         if (index < 0) {
             throw new IllegalArgumentException("Index cannot be below zero");
         }
@@ -51,8 +51,8 @@ public class DynamicDoubleArray {
         if (array.length == 0) {
             return false;
         }
-        double[] buffer = Arrays.copyOf(array, array.length);
-        array = new double[array.length - 1];
+        T[] buffer = Arrays.copyOf(array, array.length);
+        array = (T[]) new Number[array.length - 1];
         int shift = 0;
         for (int i = 0; i < array.length; i++) {
             if (i == index) {
