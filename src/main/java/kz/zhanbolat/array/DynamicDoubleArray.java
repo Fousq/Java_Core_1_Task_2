@@ -42,6 +42,24 @@ public class DynamicDoubleArray {
         return array[index];
     }
 
+    public boolean remove(int index) {
+        if (index < 0) {
+            return false;
+        }
+        if (index > array.length) {
+            return false;
+        }
+        double[] buffer = Arrays.copyOf(array, array.length);
+        array = new double[array.length - 1];
+        for (int i = 0; i < buffer.length; i++) {
+            if (i == index) {
+                continue;
+            }
+            array[i] = buffer[i];
+        }
+        return true;
+    }
+
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("DynamicDoubleArray{")
