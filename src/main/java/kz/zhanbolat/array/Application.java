@@ -8,6 +8,7 @@ public class Application {
         System.out.println(unlimitedArray);
         unlimitedArray.add(20d);
         System.out.println(unlimitedArray);
+        System.out.println("Value of  index 1: " + unlimitedArray.get(1));
         unlimitedArray.remove(0);
         System.out.println(unlimitedArray);
 
@@ -17,5 +18,10 @@ public class Application {
         limitedArray.add(3.0d);
         limitedArray.remove(0);
         System.out.println(limitedArray);
+        try {
+            limitedArray.get(1);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 }
