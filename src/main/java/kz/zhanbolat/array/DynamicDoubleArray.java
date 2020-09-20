@@ -19,6 +19,7 @@ public class DynamicDoubleArray {
         if (array.length == 0) {
             array = new double[1];
             array[0] = value;
+            return true;
         }
         if (array.length == capacity) {
             return false;
@@ -34,7 +35,7 @@ public class DynamicDoubleArray {
         if (index < 0) {
             throw new IllegalArgumentException("Index cannot be below zero");
         }
-        if (index > array.length) {
+        if (index >= array.length) {
             throw new IndexOutOfBoundsException("Cannot get value beyond the capacity rage");
         }
         return array[index];
@@ -44,20 +45,25 @@ public class DynamicDoubleArray {
         if (index < 0) {
             return false;
         }
-        if (index > array.length) {
+        if (index >= array.length) {
+            return false;
+        }
+        if (array.length == 0) {
             return false;
         }
         double[] buffer = Arrays.copyOf(array, array.length);
         array = new double[array.length - 1];
-        for (int i = 0; i < buffer.length; i++) {
+        int shift = 0;
+        for (int i = 0; i < array.length; i++) {
             if (i == index) {
-                continue;
+                shift = 1;
             }
-            array[i] = buffer[i];
+            array[i] = buffer[i + shift];
         }
         return true;
     }
 
+    @Override
     public String toString() {
         return new StringBuilder().append("DynamicDoubleArray{")
                 .append("array=").append(Arrays.toString(array))
